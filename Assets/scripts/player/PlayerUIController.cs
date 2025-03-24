@@ -22,7 +22,6 @@ public class PlayerUIController : MonoBehaviour
     public GameObject GamePanel = null;
     public GameObject Screamer = null;
     public TextMeshProUGUI deathMessage;
-    public float screamerDuration = 3f; // Час, на який залишається скрімер
 
     [Header("Notebook UI")]
     public GameObject notebookUI; // Панель UI для записника
@@ -134,15 +133,6 @@ public class PlayerUIController : MonoBehaviour
         {
             deathMessage.text = causeOfDeath;
         }
-        StartCoroutine(HandleDeathScreen());
-    }
-
-    private IEnumerator HandleDeathScreen()
-    {
-        yield return new WaitForSeconds(screamerDuration);
-        Screamer.SetActive(false);
-        GamePanel.SetActive(true);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private IEnumerator FadeInSlider()

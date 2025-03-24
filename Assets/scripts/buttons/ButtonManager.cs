@@ -1,10 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void restart_with_corutine()
+    {
+        StartCoroutine(restartCoroutine(SceneManager.GetActiveScene().buildIndex , 6));
+    }
+    private IEnumerator restartCoroutine(int sceneIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeScene(sceneIndex);
+    }
+
+    // Функція для зміни сцени після очікування завершення попередньої дії
+    public void ChangeSceneWithDelay(int sceneIndex)
+    {
+        StartCoroutine(ChangeSceneCoroutine(sceneIndex, 6));
+    }
+
+    private IEnumerator ChangeSceneCoroutine(int sceneIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeScene(sceneIndex);
+    }
     // Функція для зміни сцени по індексу
     public void ChangeScene(int sceneIndex)
     {
@@ -56,4 +80,6 @@ public class ButtonManager : MonoBehaviour
             Debug.LogError("URL не може бути порожнім!");
         }
     }
+
+
 }
