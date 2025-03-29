@@ -22,12 +22,13 @@ public class PlayerUIController : MonoBehaviour
     public GameObject GamePanel = null;
     public GameObject Screamer = null;
     public TextMeshProUGUI deathMessage;
-    public float screamerDuration = 3f; // Час, на який залишається скрімер
+    public float screamerDuration = 3f;
+    public AudioSource screamerAudio; // Додано змінну для звуку скрімера
 
     [Header("Notebook UI")]
-    public GameObject notebookUI; // Панель UI для записника
-    public TextMeshProUGUI notebookTextUI; // Поле тексту записника
-    private bool isNotebookOpen = false; // Чи відкрито записник
+    public GameObject notebookUI;
+    public TextMeshProUGUI notebookTextUI;
+    private bool isNotebookOpen = false;
 
     private void Start()
     {
@@ -65,7 +66,7 @@ public class PlayerUIController : MonoBehaviour
             Debug.LogWarning("PauseMenu is not assigned.");
         }
 
-        notebookUI.SetActive(false); // Ховаємо UI записника при старті
+        notebookUI.SetActive(false);
     }
 
     private void Update()
@@ -114,7 +115,7 @@ public class PlayerUIController : MonoBehaviour
 
             if (currentRadiation >= maxRadiation)
             {
-                Die("NOW YOU ARE GLOWING LIKE A TOURCH!");
+                Die("NOW YOU ARE GLOWING LIKE A TORCH!");
             }
         }
         else
@@ -126,10 +127,14 @@ public class PlayerUIController : MonoBehaviour
         }
     }
 
-    private void Die(string causeOfDeath)
+    public void Die(string causeOfDeath)
     {
         GamePanel.SetActive(false);
         Screamer.SetActive(true);
+        if (screamerAudio != null)
+        {
+            screamerAudio.Play(); // Відтворення звуку
+        }
         if (deathMessage != null)
         {
             deathMessage.text = causeOfDeath;
@@ -139,7 +144,11 @@ public class PlayerUIController : MonoBehaviour
 
     private IEnumerator HandleDeathScreen()
     {
-        yield return new WaitForSeconds(screamerDuration);
+        while (!Input.GetKeyDown(KeyCode.Space))
+        {
+            yield return null;
+        }
+
         Screamer.SetActive(false);
         GamePanel.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -156,6 +165,7 @@ public class PlayerUIController : MonoBehaviour
         }
         sliderCanvasGroup.alpha = 1f;
     }
+
     public void SetRadiationSliderVisibility(bool visible)
     {
         StopAllCoroutines();
@@ -192,13 +202,12 @@ public class PlayerUIController : MonoBehaviour
         Cursor.visible = false;
     }
 
-
     public void ShowNotebookUI(string text)
     {
         notebookUI.SetActive(true);
         notebookTextUI.text = text;
         isNotebookOpen = true;
-        Time.timeScale = 0f; // Зупинка гри під час читання
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -207,7 +216,7 @@ public class PlayerUIController : MonoBehaviour
     {
         notebookUI.SetActive(false);
         isNotebookOpen = false;
-        Time.timeScale = 1f; // Відновлення часу
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

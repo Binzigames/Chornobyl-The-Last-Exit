@@ -61,7 +61,7 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 96b45e9ccb773e24093945bcaaba46ab, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8842e5f184cf1da4db20a12e1f4c1d0b, type: 2}
     - target: {fileID: 919132149155446097, guid: 96b45e9ccb773e24093945bcaaba46ab, type: 3}
@@ -117,4 +117,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6055c10419926224a97e4d674884de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiationDecreaseRate: 0.5
+  radiationDecreaseRate: 10
