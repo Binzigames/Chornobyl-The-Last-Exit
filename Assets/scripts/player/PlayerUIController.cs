@@ -13,6 +13,10 @@ public class PlayerUIController : MonoBehaviour
     private CanvasGroup sliderCanvasGroup;
     private RadiationZone[] radiationZones;
 
+    [Header("Audio")]
+    public AudioSource radiationAudio;
+    public AudioSource screamerAudio;
+
     [Header("Pause menu")]
     public bool InPause = false;
     public GameObject PauseMenu = null;
@@ -23,12 +27,13 @@ public class PlayerUIController : MonoBehaviour
     public GameObject Screamer = null;
     public TextMeshProUGUI deathMessage;
     public float screamerDuration = 3f;
-    public AudioSource screamerAudio; // Додано змінну для звуку скрімера
 
     [Header("Notebook UI")]
     public GameObject notebookUI;
     public TextMeshProUGUI notebookTextUI;
     private bool isNotebookOpen = false;
+
+    private bool isDead = false;
 
     private void Start()
     {
@@ -67,6 +72,11 @@ public class PlayerUIController : MonoBehaviour
         }
 
         notebookUI.SetActive(false);
+        if (radiationAudio != null)
+        {
+            radiationAudio.loop = true;
+            radiationAudio.Stop();
+        }
     }
 
     private void Update()
@@ -88,9 +98,7 @@ public class PlayerUIController : MonoBehaviour
         }
 
         if (radiationSlider == null || sliderCanvasGroup == null || radiationZones.Length == 0)
-        {
             return;
-        }
 
         bool isInRadiationZone = false;
 
@@ -110,10 +118,15 @@ public class PlayerUIController : MonoBehaviour
                 StartCoroutine(FadeInSlider());
             }
 
+            if (radiationAudio != null && !radiationAudio.isPlaying)
+            {
+                radiationAudio.Play(); 
+            }
+
             radiationSlider.value = currentRadiation / maxRadiation;
             currentRadiation = Mathf.Min(currentRadiation, maxRadiation);
 
-            if (currentRadiation >= maxRadiation)
+            if (currentRadiation >= maxRadiation && !isDead)
             {
                 Die("NOW YOU ARE GLOWING LIKE A TORCH!");
             }
@@ -124,26 +137,43 @@ public class PlayerUIController : MonoBehaviour
             {
                 StartCoroutine(FadeOutSlider());
             }
+
+            if (radiationAudio != null && radiationAudio.isPlaying)
+            {
+                radiationAudio.Stop(); 
+            }
         }
     }
 
     public void Die(string causeOfDeath)
     {
+        if (isDead) return;
+
+        isDead = true;
+
         GamePanel.SetActive(false);
         Screamer.SetActive(true);
+
+        if (radiationAudio != null && radiationAudio.isPlaying)
+            radiationAudio.Stop();
+
         if (screamerAudio != null)
         {
-            screamerAudio.Play(); // Відтворення звуку
+            screamerAudio.Play();
         }
+
         if (deathMessage != null)
         {
             deathMessage.text = causeOfDeath;
         }
+
         StartCoroutine(HandleDeathScreen());
     }
 
     private IEnumerator HandleDeathScreen()
     {
+        yield return new WaitForSeconds(screamerDuration); 
+
         while (!Input.GetKeyDown(KeyCode.Space))
         {
             yield return null;
@@ -151,6 +181,7 @@ public class PlayerUIController : MonoBehaviour
 
         Screamer.SetActive(false);
         GamePanel.SetActive(true);
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

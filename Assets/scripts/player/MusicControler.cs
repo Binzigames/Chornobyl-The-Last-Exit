@@ -10,7 +10,6 @@ public class MusicControler : MonoBehaviour
 
     [Header("BOOLING")]
     public bool isMusicOn = true;
-    private AudioListener audioListener;
 
     void Awake()
     {
@@ -19,9 +18,14 @@ public class MusicControler : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Load saved music state
+        isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+        ApplyVolume();
     }
 
     void Start()
@@ -38,23 +42,20 @@ public class MusicControler : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        audioListener = FindObjectOfType<AudioListener>();
-        if (audioListener != null)
-        {
-            audioListener.enabled = isMusicOn;
-        }
+        ApplyVolume();
     }
 
     public void ToggleMusic()
     {
         isMusicOn = !isMusicOn;
-        if (audioListener != null)
-        {
-            audioListener.enabled = isMusicOn;
-        }
-        else
-        {
-            Debug.LogError("AudioListener is not assigned.");
-        }
+        ApplyVolume();
+
+        PlayerPrefs.SetInt("MusicOn", isMusicOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    private void ApplyVolume()
+    {
+        AudioListener.volume = isMusicOn ? 1f : 0f;
     }
 }
