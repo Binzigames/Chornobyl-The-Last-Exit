@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class NotebookHandler : MonoBehaviour
 {
-    public string notebookText; // Текст записника
-    public GameObject interactionPrompt; // Об'єкт підказки "Натисніть E"
+    public string notebookText;
+    public string notebookTextUA;
+    public GameObject interactionPrompt; 
 
     private bool isPlayerNearby = false;
     private PlayerUIController playerUI;
@@ -11,7 +12,7 @@ public class NotebookHandler : MonoBehaviour
     private void Start()
     {
         interactionPrompt.SetActive(false);
-        playerUI = FindObjectOfType<PlayerUIController>(); // Знаходимо UI-контролер гравця
+        playerUI = FindObjectOfType<PlayerUIController>();
     }
 
     private void Update()
@@ -20,7 +21,7 @@ public class NotebookHandler : MonoBehaviour
         {
             if (playerUI != null)
             {
-                playerUI.ShowNotebookUI(notebookText);
+                playerUI.ShowNotebookUI(notebookText , notebookTextUA);
             }
         }
     }

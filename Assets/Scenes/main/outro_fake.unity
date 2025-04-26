@@ -594,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[0].text
@@ -656,16 +656,105 @@ PrefabInstance:
       value: 'ending 2/2 : Fallen legend'
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[4].sprite
+      propertyPath: slides.Array.data[0].textEN
+      value: "\u201CI won\u2019t survive here\u2026 the records show that it\u2019s
+        dangerous here, and if we unpack the reactor, it won\u2019t be any safer\u2026
+        the consequences scare me.\u201D\r\nAndriy\u2019s last words were on the
+        radio, he never got in touch with the Operation Shield to Sword support team
+        again. After some time, he continued to live, but his girlfriend died - unable
+        to survive the loss, Andriy hanged himself on March 16."
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[0].textUA
+      value: "\xAB\u042F \u0442\u0443\u0442 \u043D\u0435 \u0432\u0438\u0436\u0438\u0432\u0443\u2026
+        \u043F\u043E \u0437\u0430\u043F\u0438\u0441\u0430\u043C \u0437\u0440\u043E\u0437\u0443\u043C\u0456\u043B\u043E
+        \u0449\u043E \u0442\u0443\u0442 \u043D\u0435\u0431\u0435\u0437\u043F\u0435\u0447\u043D\u043E,
+        \u0456 \u044F\u043A\u0449\u043E \u0440\u0430\u0437\u043F\u0430\u043A\u0443\u0432\u0430\u0442\u0438
+        \u0440\u0435\u0430\u043A\u0442\u043E\u0440 \u0431\u0443\u0434\u0435 \u0449\u0435
+        \u043D\u0435 \u0431\u0435\u0437\u043F\u0435\u0447\u043D\u0456\u0448\u0435\u2026
+        \u043D\u0430\u0441\u043B\u0456\u0434\u043A\u0438 \u043B\u044F\u043A\u0430\u044E\u0442\u044C
+        \u043C\u0435\u043D\u0435\xBB\r\n\u041E\u0441\u0442\u0430\u043D\u043D\u0456
+        \u0441\u043B\u043E\u0432\u0430 \u0410\u043D\u0434\u0440\u0456\u044F \u044F\u043A\u0456
+        \u0432\u0456\u043D \u0441\u043A\u0430\u0437\u0430\u0432 \u043D\u0430 \u0440\u0430\u0446\u0456\u044E,
+        \u0431\u0456\u043B\u044C\u0448\u0435 \u0432\u0456\u043D \u043D\u0435 \u0432\u0438\u0445\u043E\u0434\u0438\u0432
+        \u043D\u0430 \u0437\u0432\u02BC\u044F\u0437\u043E\u043A \u0437 \u043A\u043E\u043C\u0430\u043D\u0434\u043E\u044E
+        \u043F\u0456\u0434\u0442\u0440\u0438\u043C\u043A\u0438 \u043E\u043F\u0435\u0440\u0430\u0446\u0456\u0457
+        \xAB\u0449\u0438\u0442 \u0434\u043E \u043C\u0435\u0447\u0430\xBB. \u0427\u0435\u0440\u0435\u0437
+        \u0434\u0435\u044F\u043A\u0438\u0439 \u0447\u0430\u0441 \u0432\u0456\u043D
+        \u043F\u0440\u043E\u0434\u043E\u0432\u0436\u0438\u0432 \u0436\u0438\u0442\u0438,
+        \u043F\u0440\u043E\u0442\u0435 \u0439\u043E\u0433\u043E \u043F\u043E\u0434\u0440\u0443\u0433\u0430
+        \u0437\u0430\u0433\u0438\u043D\u0443\u043B\u0430 - \u043D\u0435 \u043F\u0435\u0440\u0435\u0436\u0438\u0432\u0448\u0438
+        \u0432\u0442\u0440\u0430\u0442\u0438, \u0410\u043D\u0434\u0440\u0456\u0439
+        \u043F\u043E\u0432\u0456\u0448\u0430\u0432\u0441\u044F 16\u043E\u0433\u043E
+        \u0431\u0435\u0440\u0435\u0437\u043D\u044F."
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[1].textEN
+      value: 'special THX (to old porko team (THEY DONT WORK ON THIS GAME!!!))
+
+        Trustmebro
+
+        Mockingbird
+
+        Sir.
+        Langis
+
+        -------------
+
+        Clan DeepRest
+
+        Playmanity.org
+
+        Ihrovary
+        community
+
+        THX FOR PLAYING'
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[1].textUA
+      value: "\u041E\u043A\u0440\u0435\u043C\u0456 \u043F\u043E\u0434\u044F\u043A\u0438
+        (\u0441\u0442\u0430\u0440\u0456\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0456
+        porko team (\u0412\u041E\u041D\u0418 \u041D\u0415 \u041F\u0420\u0410\u0426\u042E\u0412\u0410\u041B\u0418
+        \u041D\u0410\u0414 \u0426\u0406\u0404\u042E \u0413\u0420\u041E\u042E!!!))\nTrustmebro\nMockingbird\nSir.
+        Langis\n-------------\nClan DeepRest\nPlaymanity.org\nIhrovary community\n\u0414\u042F\u041A\u0423\u042E
+        \u0417\u0410 \u0413\u0420\u0423"
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[2].textEN
+      value: 'ending 2/2 : Fallen Legend'
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[2].textUA
+      value: "\u043A\u0456\u043D\u0446\u0456\u0432\u043A\u0430 2/2 : \u041F\u0430\u0432\u0448\u0430
+        \u043B\u0435\u0433\u0435\u043D\u0434\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[3].sprite
       value: 
       objectReference: {fileID: 21300000, guid: 29f97ea1bf68d024bbdf1de8cd9cd7c2, type: 3}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[3].textEN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[3].textUA
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].sprite
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[4].hasSprite
+      propertyPath: slides.Array.data[3].hasSprite
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[4].hasSprite
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].hasSprite
@@ -677,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[1].displayTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[2].displayTime
@@ -696,8 +785,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[4].spriteEffect
+      propertyPath: slides.Array.data[3].spriteEffect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[4].spriteEffect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].spriteEffect

@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    // Функція для зміни сцени по індексу
     public void ChangeScene(int sceneIndex)
     {
-        // Перевірка, чи сцена з таким індексом існує
         if (sceneIndex >= 0 && sceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(sceneIndex);
         }
-        else
-        {
-            Debug.LogError("Сцена з таким індексом не існує!");
-        }
     }
-
-    // Функція для виходу з гри
+    public void Restart()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -30,12 +27,12 @@ public class ButtonManager : MonoBehaviour
         Debug.Log("Гра закрита!");
     }
 
-    // Функція для активації або деактивації об'єкта
+
     public void ToggleObject(GameObject obj)
     {
         if (obj != null)
         {
-            obj.SetActive(!obj.activeSelf); // Змінює активність об'єкта
+            obj.SetActive(!obj.activeSelf); 
         }
         else
         {
@@ -43,7 +40,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    // Функція для відкриття URL у браузері
+
     public void OpenURL(string url)
     {
         if (!string.IsNullOrEmpty(url))

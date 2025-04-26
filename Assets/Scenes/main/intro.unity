@@ -612,61 +612,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slides:
-  - text: I arrived in Pripyat a few days before it all started. I was sent here
-      to assess the situation around the plant, to conduct a routine inspection.
-      I had no idea that this trip would change my entire life.
+  - textEN: "I arrived in Pripyat a few days before it all started. I was sent here
+      to assess the situation around the station, to conduct a routine check. I had
+      no idea that this trip would change my whole life.\r\nThere, among the gray
+      buildings and unfamiliar people, I met civil servants. They offered good money,
+      but it wasn\u2019t about them. They offered something I couldn\u2019t refuse..."
+    textUA: "\u042F \u043F\u0440\u0438\u0431\u0443\u0432 \u0434\u043E \u041F\u0440\u0438\u043F\u044F\u0442\u0456
+      \u0437\u0430 \u043A\u0456\u043B\u044C\u043A\u0430 \u0434\u043D\u0456\u0432
+      \u0434\u043E \u0442\u043E\u0433\u043E, \u044F\u043A \u0443\u0441\u0435 \u043F\u043E\u0447\u0430\u043B\u043E\u0441\u044F.
+      \u041C\u0435\u043D\u0435 \u0432\u0456\u0434\u0440\u044F\u0434\u0438\u043B\u0438
+      \u0441\u044E\u0434\u0438, \u0449\u043E\u0431 \u043E\u0446\u0456\u043D\u0438\u0442\u0438
+      \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044E \u0434\u043E\u0432\u043A\u043E\u043B\u0430
+      \u0441\u0442\u0430\u043D\u0446\u0456\u0457, \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438
+      \u0437\u0432\u0438\u0447\u0430\u0439\u043D\u0443 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0443.
+      \u042F \u0439 \u0433\u0430\u0434\u043A\u0438 \u043D\u0435 \u043C\u0430\u0432,
+      \u0449\u043E \u0446\u044F \u043F\u043E\u0457\u0437\u0434\u043A\u0430 \u0437\u043C\u0456\u043D\u0438\u0442\u044C
+      \u0443\u0441\u0435 \u043C\u043E\u0454 \u0436\u0438\u0442\u0442\u044F.\r\n\u0422\u0430\u043C,
+      \u0441\u0435\u0440\u0435\u0434 \u0441\u0456\u0440\u0438\u0445 \u0431\u0443\u0434\u0456\u0432\u0435\u043B\u044C
+      \u0456 \u043D\u0435\u0437\u043D\u0430\u0439\u043E\u043C\u0438\u0445 \u043B\u044E\u0434\u0435\u0439,
+      \u044F \u0437\u0443\u0441\u0442\u0440\u0456\u0432 \u0434\u0435\u0440\u0436\u0441\u043B\u0443\u0436\u0431\u043E\u0432\u0446\u0456\u0432.
+      \u0412\u043E\u043D\u0438 \u043F\u0440\u043E\u043F\u043E\u043D\u0443\u0432\u0430\u043B\u0438
+      \u0445\u043E\u0440\u043E\u0448\u0456 \u0433\u0440\u043E\u0448\u0456, \u0430\u043B\u0435
+      \u0440\u0456\u0447 \u0431\u0443\u043B\u0430 \u043D\u0435 \u0432 \u043D\u0438\u0445.
+      \u0412\u043E\u043D\u0438 \u0437\u0430\u043F\u0440\u043E\u043F\u043E\u043D\u0443\u0432\u0430\u043B\u0438
+      \u0442\u0435, \u0432\u0456\u0434 \u0447\u043E\u0433\u043E \u044F \u043D\u0435
+      \u043C\u0456\u0433 \u0432\u0456\u0434\u043C\u043E\u0432\u0438\u0442\u0438\u0441\u044F...\r\n"
     displayTime: 2
     hasSprite: 0
     sprite: {fileID: 0}
     spriteEffect: 0
-  - text: 'There, among the gray buildings and strangers, I met civil servants. They
-      offered me good money, but it wasn''t about them. They offered something I
-      couldn''t refuse...
+  - textEN: 'Flashback
 
-      *Flashback*'
+      I sat on the roof of the garage, staring at the night
+      horizon. The city seemed so calm, but inside me a storm was raging. I was alone,
+      or so I thought, until I heard her footsteps.
+
+      She came quietly, a silhouette
+      in the darkness, and sat down next to me. Her voice was calm, gentle. We talked
+      about everything: life, the future, the fears that weighed on my chest. She
+      calmed me down.'
+    textUA: "\u0424\u043B\u0435\u0448\u0431\u0435\u043A\r\n\u042F \u0441\u0438\u0434\u0456\u0432
+      \u043D\u0430 \u0434\u0430\u0445\u0443 \u0433\u0430\u0440\u0430\u0436\u0430,
+      \u0432\u0434\u0438\u0432\u043B\u044F\u044E\u0447\u0438\u0441\u044C \u0443 \u043D\u0456\u0447\u043D\u0438\u0439
+      \u0433\u043E\u0440\u0438\u0437\u043E\u043D\u0442. \u041C\u0456\u0441\u0442\u043E
+      \u0437\u0434\u0430\u0432\u0430\u043B\u043E\u0441\u044F \u0442\u0430\u043A\u0438\u043C
+      \u0441\u043F\u043E\u043A\u0456\u0439\u043D\u0438\u043C, \u0430\u043B\u0435
+      \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043D\u0456 \u043C\u0435\u043D\u0435
+      \u0431\u0443\u0448\u0443\u0432\u0430\u043B\u0430 \u0431\u0443\u0440\u044F.
+      \u042F \u0431\u0443\u0432 \u0441\u0430\u043C, \u0430\u0431\u043E \u043C\u0435\u043D\u0456
+      \u0442\u0430\u043A \u0437\u0434\u0430\u0432\u0430\u043B\u043E\u0441\u044F,
+      \u0430\u0436 \u043F\u043E\u043A\u0438 \u043D\u0435 \u043F\u043E\u0447\u0443\u043B\u0430\u0441\u044F
+      \u0457\u0457 \u0445\u043E\u0434\u0430.\r\n\u0412\u043E\u043D\u0430 \u043F\u0456\u0434\u0456\u0439\u0448\u043B\u0430
+      \u0442\u0438\u0445\u043E, \u0441\u0438\u043B\u0443\u0435\u0442 \u0443 \u0442\u0435\u043C\u0440\u044F\u0432\u0456,
+      \u0456 \u0441\u0456\u043B\u0430 \u043F\u043E\u0440\u0443\u0447. \u0407\u0457
+      \u0433\u043E\u043B\u043E\u0441 \u2014 \u0441\u043F\u043E\u043A\u0456\u0439\u043D\u0438\u0439,
+      \u043B\u0430\u0433\u0456\u0434\u043D\u0438\u0439. \u041C\u0438 \u0433\u043E\u0432\u043E\u0440\u0438\u043B\u0438
+      \u043F\u0440\u043E \u0432\u0441\u0435: \u043F\u0440\u043E \u0436\u0438\u0442\u0442\u044F,
+      \u043F\u0440\u043E \u043C\u0430\u0439\u0431\u0443\u0442\u043D\u0454, \u043F\u0440\u043E
+      \u0441\u0442\u0440\u0430\u0445\u0438, \u044F\u043A\u0456 \u0442\u0438\u0441\u043D\u0443\u0442\u044C
+      \u043D\u0430 \u0433\u0440\u0443\u0434\u0438. \u0412\u043E\u043D\u0430 \u0437\u0430\u0441\u043F\u043E\u043A\u043E\u044E\u0432\u0430\u043B\u0430
+      \u043C\u0435\u043D\u0435.\r\n"
     displayTime: 2
     hasSprite: 0
     sprite: {fileID: 0}
     spriteEffect: 0
-  - text: 'I was sitting on the roof of a garage, staring at the night skyline. The
-      city seemed so calm, but a storm was raging inside me. I was alone, or so I
-      thought, until I heard her walking.
-
-      She came quietly, silhouetted in
-      the darkness, and sat down next to me. Her voice was calm and gentle. We talked
-      about everything: about life, about the future, about the fears that were pressing
-      on my chest. She calmed me down.
-
-      ....'
+  - textEN: "End of flashback\r\nThis offer\u2026 it wasn\u2019t just a mission.
+      It was a chance to help her. Better treatment for radiation sickness was the
+      only thing that could save her. I didn\u2019t hesitate.\r\nI agreed to take
+      part in Operation Shield and Sword. My task was to infiltrate the station,
+      take radiation measurements, assess the situation inside.\r\nI went to the
+      very heart of the disaster."
+    textUA: "\u041A\u0456\u043D\u0435\u0446\u044C \u0444\u043B\u0435\u0448\u0431\u0435\u043A\u0443\r\n\u0426\u044F
+      \u043F\u0440\u043E\u043F\u043E\u0437\u0438\u0446\u0456\u044F\u2026 \u0446\u0435
+      \u0431\u0443\u043B\u0430 \u043D\u0435 \u043F\u0440\u043E\u0441\u0442\u043E
+      \u043C\u0456\u0441\u0456\u044F. \u0426\u0435 \u0431\u0443\u0432 \u0448\u0430\u043D\u0441
+      \u0434\u043E\u043F\u043E\u043C\u043E\u0433\u0442\u0438 \u0457\u0439. \u041A\u0440\u0430\u0449\u0456
+      \u0443\u043C\u043E\u0432\u0438 \u043B\u0456\u043A\u0443\u0432\u0430\u043D\u043D\u044F
+      \u043F\u0440\u043E\u043C\u0435\u043D\u0435\u0432\u043E\u0457 \u0445\u0432\u043E\u0440\u043E\u0431\u0438
+      \u2013 \u0454\u0434\u0438\u043D\u0435, \u0449\u043E \u043C\u043E\u0433\u043B\u043E
+      \u0457\u0457 \u0432\u0440\u044F\u0442\u0443\u0432\u0430\u0442\u0438. \u042F
+      \u043D\u0435 \u0432\u0430\u0433\u0430\u0432\u0441\u044F.\r\n\u042F \u043F\u043E\u0433\u043E\u0434\u0438\u0432\u0441\u044F
+      \u0432\u0437\u044F\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044C \u0432
+      \u043E\u043F\u0435\u0440\u0430\u0446\u0456\u0457 \xAB\u0429\u0438\u0442 \u0442\u0430
+      \u043C\u0435\u0447\xBB. \u041C\u043E\u0454 \u0437\u0430\u0432\u0434\u0430\u043D\u043D\u044F
+      \u2014 \u043F\u0440\u043E\u043D\u0438\u043A\u043D\u0443\u0442\u0438 \u043D\u0430
+      \u0441\u0442\u0430\u043D\u0446\u0456\u044E, \u0437\u0440\u043E\u0431\u0438\u0442\u0438
+      \u0432\u0438\u043C\u0456\u0440\u0438 \u0440\u0430\u0434\u0456\u0430\u0446\u0456\u0457,
+      \u043E\u0446\u0456\u043D\u0438\u0442\u0438 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044E
+      \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043D\u0456.\r\n\u042F \u043F\u0456\u0448\u043E\u0432
+      \u0443 \u0441\u0430\u043C\u0435 \u0441\u0435\u0440\u0446\u0435 \u043A\u0430\u0442\u0430\u0441\u0442\u0440\u043E\u0444\u0438.\r\n"
     displayTime: 2
     hasSprite: 0
     sprite: {fileID: 0}
     spriteEffect: 0
-  - text: 'We were walking home, the streets were almost empty. She was laughing,
-      telling me something ordinary, everyday... And then there was an explosion.
-
-      I
-      did not immediately realize what had happened. She fell... I shouted her name.
-      But my voice was drowned out by the flames and chaos that engulfed the city.'
+  - textEN: 
+    textUA: 
     displayTime: 2
-    hasSprite: 0
-    sprite: {fileID: 0}
-    spriteEffect: 0
-  - text: 'This offer... it was not just a mission. It was a chance to help her.
-      Better treatment for radiation sickness was the only thing that could save
-      her. I did not hesitate.
-
-      I agreed to take part in Operation Shield and
-      Sword. My task was to enter the station, take measurements of radiation, and
-      assess the situation inside.
-
-      I went to the heart of the disaster.'
-    displayTime: 2
-    hasSprite: 0
-    sprite: {fileID: 0}
-    spriteEffect: 0
-  - text: 
-    displayTime: 0
     hasSprite: 1
     sprite: {fileID: 21300000, guid: 29f97ea1bf68d024bbdf1de8cd9cd7c2, type: 3}
     spriteEffect: 1

@@ -35,8 +35,12 @@ public class PlayerUIController : MonoBehaviour
 
     private bool isDead = false;
 
+    private LocalizationManager localizationManager;
+
     private void Start()
     {
+        localizationManager = FindObjectOfType<LocalizationManager>();
+
         if (radiationSlider == null)
         {
             Debug.LogError("RadiationSlider is not assigned in the Inspector.");
@@ -81,6 +85,7 @@ public class PlayerUIController : MonoBehaviour
 
     private void Update()
     {
+        // Обробка натискання клавіші Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isNotebookOpen)
@@ -97,6 +102,7 @@ public class PlayerUIController : MonoBehaviour
             }
         }
 
+        // Якщо UI не ініціалізовано, припиняємо обробку
         if (radiationSlider == null || sliderCanvasGroup == null || radiationZones.Length == 0)
             return;
 
@@ -120,11 +126,17 @@ public class PlayerUIController : MonoBehaviour
 
             if (radiationAudio != null && !radiationAudio.isPlaying)
             {
-                radiationAudio.Play(); 
+                radiationAudio.Play();
             }
 
             radiationSlider.value = currentRadiation / maxRadiation;
             currentRadiation = Mathf.Min(currentRadiation, maxRadiation);
+
+            if (radiationAudio != null)
+            {
+                float radiationRatio = currentRadiation / maxRadiation;
+                radiationAudio.pitch = Mathf.Lerp(1f, 2f, radiationRatio);
+            }
 
             if (currentRadiation >= maxRadiation && !isDead)
             {
@@ -140,8 +152,19 @@ public class PlayerUIController : MonoBehaviour
 
             if (radiationAudio != null && radiationAudio.isPlaying)
             {
-                radiationAudio.Stop(); 
+                radiationAudio.Stop();
             }
+        }
+
+        // Підлаштовуємо аудіо під час паузи
+        if (InPause && radiationAudio != null)
+        {
+            radiationAudio.pitch = 0.5f; // Знижений пітч під час паузи
+            radiationAudio.volume = 0.2f; // Знижений об'єм під час паузи
+        }
+        else if (radiationAudio != null)
+        {
+            radiationAudio.volume = 1f; // Відновлюємо об'єм
         }
     }
 
@@ -172,7 +195,7 @@ public class PlayerUIController : MonoBehaviour
 
     private IEnumerator HandleDeathScreen()
     {
-        yield return new WaitForSeconds(screamerDuration); 
+        yield return new WaitForSeconds(screamerDuration);
 
         while (!Input.GetKeyDown(KeyCode.Space))
         {
@@ -217,26 +240,39 @@ public class PlayerUIController : MonoBehaviour
 
     private void PauseGame()
     {
+
         Time.timeScale = 0f;
         PauseMenu.SetActive(true);
         InPause = true;
+
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
     private void ResumeGame()
     {
+
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
         InPause = false;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public void ShowNotebookUI(string text)
+    public void ShowNotebookUI(string text , string ua_text)
     {
         notebookUI.SetActive(true);
-        notebookTextUI.text = text;
+        if (localizationManager != null && localizationManager.IsUkranian == true)
+        {
+            notebookTextUI.text = ua_text;
+        }
+        else
+        {
+            notebookTextUI.text = text;
+        }
+           
         isNotebookOpen = true;
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

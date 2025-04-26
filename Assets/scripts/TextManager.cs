@@ -10,11 +10,12 @@ public class IntroManager : MonoBehaviour
     [System.Serializable]
     public class Slide
     {
-        [TextArea(3, 10)] public string text; // Текст слайду
-        public float displayTime = 2f; // Час показу слайду
-        public bool hasSprite = false; // Чи є спрайт на слайді
-        public Sprite sprite; // Спрайт для відображення
-        public SpriteEffect spriteEffect = SpriteEffect.None; // Ефект для спрайту
+        [TextArea(3, 10)] public string textEN;
+        [TextArea(3, 10)] public string textUA;
+        public float displayTime = 2f;
+        public bool hasSprite = false;
+        public Sprite sprite;
+        public SpriteEffect spriteEffect = SpriteEffect.None;
     }
 
     public enum SpriteEffect
@@ -27,14 +28,17 @@ public class IntroManager : MonoBehaviour
 
     public List<Slide> slides;
     public TextMeshProUGUI textDisplay;
-    public float typingSpeed = 0.05f; // Швидкість друку тексту
+    public float typingSpeed = 0.05f;
     public CanvasGroup canvasGroup;
-    public int nextSceneIndex = 1; // Індекс сцени для переходу
-    public Image spriteDisplay; // Поле для спрайта
+    public int nextSceneIndex = 1;
+    public Image spriteDisplay;
 
     private int currentSlideIndex = 0;
     private bool isTyping = false;
     private bool skipSlide = false;
+    private bool isUkrainian = false;
+    private LocalizationManager localizationManager;
+    private Coroutine currentCoroutine;
 
     void Start()
     {
@@ -43,7 +47,18 @@ public class IntroManager : MonoBehaviour
             Debug.LogError("IntroManager: Один або кілька об'єктів не призначені або список слайдів порожній!");
             return;
         }
-        StartCoroutine(ShowSlides());
+
+        localizationManager = FindObjectOfType<LocalizationManager>();
+        if (localizationManager != null)
+        {
+            isUkrainian = localizationManager.IsUkranian;
+        }
+        else
+        {
+            isUkrainian = false;
+        }
+
+        currentCoroutine = StartCoroutine(ShowSlides());
     }
 
     void Update()
@@ -59,42 +74,46 @@ public class IntroManager : MonoBehaviour
         foreach (var slide in slides)
         {
             skipSlide = false;
-            if (slide.hasSprite && slide.sprite != null && spriteDisplay != null)
+
+            string currentText = isUkrainian ? slide.textUA : slide.textEN;
+
+            if (slide.hasSprite && slide.sprite != null)
             {
                 spriteDisplay.sprite = slide.sprite;
                 spriteDisplay.SetNativeSize();
                 spriteDisplay.enabled = true;
                 spriteDisplay.color = new Color(1, 1, 1, 1);
                 spriteDisplay.transform.localScale = Vector3.one;
+
                 yield return StartCoroutine(ApplySpriteEffect(slide.spriteEffect));
-                spriteDisplay.enabled = false;
             }
-            else if (spriteDisplay != null)
+            else
             {
                 spriteDisplay.sprite = null;
-                spriteDisplay.color = new Color(1, 1, 1, 0);
                 spriteDisplay.enabled = false;
             }
 
-            yield return StartCoroutine(TypeText(slide.text));
+            yield return StartCoroutine(TypeText(currentText));
+
             float elapsedTime = 0f;
             while (elapsedTime < slide.displayTime && !skipSlide)
             {
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
             yield return StartCoroutine(FadeOut());
             textDisplay.text = "";
         }
-        // Інтро завершене, переходимо на іншу сцену
+
         SceneManager.LoadScene(nextSceneIndex);
     }
 
     IEnumerator TypeText(string text)
     {
-        if (textDisplay == null) yield break;
         isTyping = true;
         textDisplay.text = "";
+
         foreach (char letter in text)
         {
             if (skipSlide)
@@ -105,20 +124,22 @@ public class IntroManager : MonoBehaviour
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
         isTyping = false;
     }
 
     IEnumerator FadeOut()
     {
-        if (canvasGroup == null) yield break;
         float fadeDuration = 0.5f;
         float elapsedTime = 0;
+
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             canvasGroup.alpha = 1 - (elapsedTime / fadeDuration);
             yield return null;
         }
+
         canvasGroup.alpha = 0;
         yield return new WaitForSeconds(0.5f);
         canvasGroup.alpha = 1;
@@ -127,13 +148,14 @@ public class IntroManager : MonoBehaviour
     IEnumerator ApplySpriteEffect(SpriteEffect effect)
     {
         if (spriteDisplay == null) yield break;
+
         if (effect == SpriteEffect.FadeIn)
         {
             float alpha = 0;
             while (alpha < 1)
             {
                 alpha += Time.deltaTime;
-                spriteDisplay.color = new Color(1, 1, 1, alpha);
+                spriteDisplay.color = new Color(1, 1, 1, Mathf.Clamp01(alpha));
                 yield return null;
             }
         }
@@ -154,5 +176,25 @@ public class IntroManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             spriteDisplay.color = new Color(1, 1, 1, 0);
         }
+    }
+
+    public void SwitchToUkrainian()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        isUkrainian = true;
+        currentCoroutine = StartCoroutine(ShowSlides());
+    }
+
+    public void SwitchToEnglish()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        isUkrainian = false;
+        currentCoroutine = StartCoroutine(ShowSlides());
     }
 }

@@ -13,13 +13,40 @@ public class LevelUI : MonoBehaviour
     public float displayTime = 3f;
     public float fadeDuration = 1f;
 
+    private LocalizationManager localizationManager;
+
     [Header("Text")]
     public string levelName;
     public string levelDescription;
+    public string levelNameUA;
+    public string levelDescriptionUA;
 
     void Start()
     {
-        ShowLevelInfo(levelName, levelDescription);
+        if (localizationManager != null && localizationManager.IsUkranian == true)
+        {
+            ShowLevelInfo(levelNameUA, levelDescriptionUA);
+        }
+        else
+        {
+            ShowLevelInfo(levelName, levelDescription);
+        }
+        localizationManager = FindObjectOfType<LocalizationManager>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (localizationManager != null && localizationManager.IsUkranian == true)
+            {
+                ShowLevelInfo(levelNameUA, levelDescriptionUA);
+            }
+            else
+            {
+                ShowLevelInfo(levelName, levelDescription);
+            }
+            
+        }
     }
 
     public void ShowLevelInfo(string levelName, string levelDescription)
