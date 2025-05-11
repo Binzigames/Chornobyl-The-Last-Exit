@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class PlayerUIController : MonoBehaviour
@@ -16,6 +17,17 @@ public class PlayerUIController : MonoBehaviour
     [Header("Audio")]
     public AudioSource radiationAudio;
     public AudioSource screamerAudio;
+
+    [Header("Audio Settings")]
+    [Range(0f, 1f)] public float masterVolume = 1f;
+    [Range(0f, 1f)] public float radiationVolume = 1f;
+    [Range(0f, 1f)] public float screamerVolume = 1f;
+
+    [Header("Ambient Audio")]
+    public List<AudioClip> ambientClips = new List<AudioClip>();
+    public AudioSource ambientAudioSource;
+    [Range(0f, 1f)] public float ambientVolume = 1f;
+    private float ambientDelay = 3f;
 
     [Header("Pause menu")]
     public bool InPause = false;
@@ -34,7 +46,6 @@ public class PlayerUIController : MonoBehaviour
     private bool isNotebookOpen = false;
 
     private bool isDead = false;
-
     private LocalizationManager localizationManager;
 
     private void Start()
@@ -76,33 +87,35 @@ public class PlayerUIController : MonoBehaviour
         }
 
         notebookUI.SetActive(false);
+
         if (radiationAudio != null)
         {
             radiationAudio.loop = true;
             radiationAudio.Stop();
         }
+
+        if (ambientAudioSource != null)
+        {
+            ambientAudioSource.loop = false;
+            ambientAudioSource.playOnAwake = false;
+            StartCoroutine(PlayAmbientLoop());
+        }
+
+        UpdateAudioVolumes();
     }
 
     private void Update()
     {
-        // Обробка натискання клавіші Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isNotebookOpen)
-            {
                 CloseNotebookUI();
-            }
             else if (!InPause)
-            {
                 PauseGame();
-            }
             else
-            {
                 ResumeGame();
-            }
         }
 
-        // Якщо UI не ініціалізовано, припиняємо обробку
         if (radiationSlider == null || sliderCanvasGroup == null || radiationZones.Length == 0)
             return;
 
@@ -120,14 +133,10 @@ public class PlayerUIController : MonoBehaviour
         if (isInRadiationZone)
         {
             if (sliderCanvasGroup.alpha < 1f)
-            {
                 StartCoroutine(FadeInSlider());
-            }
 
             if (radiationAudio != null && !radiationAudio.isPlaying)
-            {
                 radiationAudio.Play();
-            }
 
             radiationSlider.value = currentRadiation / maxRadiation;
             currentRadiation = Mathf.Min(currentRadiation, maxRadiation);
@@ -139,32 +148,20 @@ public class PlayerUIController : MonoBehaviour
             }
 
             if (currentRadiation >= maxRadiation && !isDead)
-            {
                 Die("NOW YOU ARE GLOWING LIKE A TORCH!");
-            }
         }
         else
         {
             if (sliderCanvasGroup.alpha > 0f)
-            {
                 StartCoroutine(FadeOutSlider());
-            }
 
             if (radiationAudio != null && radiationAudio.isPlaying)
-            {
                 radiationAudio.Stop();
-            }
         }
 
-        // Підлаштовуємо аудіо під час паузи
-        if (InPause && radiationAudio != null)
+        if (radiationAudio != null)
         {
-            radiationAudio.pitch = 0.5f; // Знижений пітч під час паузи
-            radiationAudio.volume = 0.2f; // Знижений об'єм під час паузи
-        }
-        else if (radiationAudio != null)
-        {
-            radiationAudio.volume = 1f; // Відновлюємо об'єм
+            radiationAudio.volume = radiationVolume * masterVolume * (InPause ? 0.2f : 1f);
         }
     }
 
@@ -173,7 +170,6 @@ public class PlayerUIController : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-
         GamePanel.SetActive(false);
         Screamer.SetActive(true);
 
@@ -182,13 +178,12 @@ public class PlayerUIController : MonoBehaviour
 
         if (screamerAudio != null)
         {
+            screamerAudio.volume = screamerVolume * masterVolume;
             screamerAudio.Play();
         }
 
         if (deathMessage != null)
-        {
             deathMessage.text = causeOfDeath;
-        }
 
         StartCoroutine(HandleDeathScreen());
     }
@@ -198,9 +193,7 @@ public class PlayerUIController : MonoBehaviour
         yield return new WaitForSeconds(screamerDuration);
 
         while (!Input.GetKeyDown(KeyCode.Space))
-        {
             yield return null;
-        }
 
         Screamer.SetActive(false);
         GamePanel.SetActive(true);
@@ -240,11 +233,9 @@ public class PlayerUIController : MonoBehaviour
 
     private void PauseGame()
     {
-
         Time.timeScale = 0f;
         PauseMenu.SetActive(true);
         InPause = true;
-
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -252,7 +243,6 @@ public class PlayerUIController : MonoBehaviour
 
     private void ResumeGame()
     {
-
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
         InPause = false;
@@ -261,18 +251,11 @@ public class PlayerUIController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void ShowNotebookUI(string text , string ua_text)
+    public void ShowNotebookUI(string text, string ua_text)
     {
         notebookUI.SetActive(true);
-        if (localizationManager != null && localizationManager.IsUkranian == true)
-        {
-            notebookTextUI.text = ua_text;
-        }
-        else
-        {
-            notebookTextUI.text = text;
-        }
-           
+        notebookTextUI.text = localizationManager != null && localizationManager.IsUkranian ? ua_text : text;
+
         isNotebookOpen = true;
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
@@ -286,5 +269,63 @@ public class PlayerUIController : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    // ========== Volume Setters ==========
+    public void SetMasterVolume(float value)
+    {
+        masterVolume = Mathf.Clamp01(value);
+        UpdateAudioVolumes();
+    }
+
+    public void SetRadiationVolume(float value)
+    {
+        radiationVolume = Mathf.Clamp01(value);
+        UpdateAudioVolumes();
+    }
+
+    public void SetScreamerVolume(float value)
+    {
+        screamerVolume = Mathf.Clamp01(value);
+        UpdateAudioVolumes();
+    }
+
+    public void SetAmbientVolume(float value)
+    {
+        ambientVolume = Mathf.Clamp01(value);
+        UpdateAudioVolumes();
+    }
+
+    private void UpdateAudioVolumes()
+    {
+        if (radiationAudio != null)
+            radiationAudio.volume = radiationVolume * masterVolume * (InPause ? 0.2f : 1f);
+
+        if (screamerAudio != null)
+            screamerAudio.volume = screamerVolume * masterVolume;
+
+        if (ambientAudioSource != null)
+            ambientAudioSource.volume = ambientVolume * masterVolume;
+    }
+
+    // ========== Ambient Logic ==========
+    private IEnumerator PlayAmbientLoop()
+    {
+        while (true)
+        {
+            if (!ambientAudioSource.isPlaying && ambientClips.Count > 0)
+            {
+                AudioClip clip = ambientClips[Random.Range(0, ambientClips.Count)];
+                ambientAudioSource.clip = clip;
+                ambientAudioSource.volume = ambientVolume * masterVolume;
+                ambientAudioSource.Play();
+
+                // Debug log to check if sound is being played
+                Debug.Log("Playing ambient sound: " + clip.name);
+            }
+
+            yield return new WaitForSeconds(
+                ambientAudioSource.clip != null ? ambientAudioSource.clip.length + ambientDelay : 20f);
+        }
     }
 }
