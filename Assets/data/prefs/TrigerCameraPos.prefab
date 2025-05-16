@@ -67,9 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998f121738e22a14da53bd01ebf35b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPositions:
-  - {fileID: 6199610238601967561}
+  cameraPoint: {fileID: 6199610238601967561}
   fadeDuration: 0.5
+  switchToFollowOnExit: 0
 --- !u!1 &157739984182655354
 GameObject:
   m_ObjectHideFlags: 0

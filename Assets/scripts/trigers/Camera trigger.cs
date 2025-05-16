@@ -1,23 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class CameraTrigger : MonoBehaviour
 {
-    public List<Transform> cameraPositions;
+    public Transform cameraPoint;            
     public float fadeDuration = 0.5f;
-    public bool useFollowCamera = false;
-    public bool returnToFollowCameraOnExit = false;
+    public bool switchToFollowOnExit = true;
 
     private Transform cameraTransform;
     private CameraFollow cameraFollow;
     private Transform playerTransform;
     private CanvasGroup fadeCanvas;
     private Image fadeImage;
-    private Stack<(Vector3, Quaternion)> cameraHistory = new Stack<(Vector3, Quaternion)>();
-    private bool playerAlreadyEntered = false;
-    private bool lastFollowState;
 
     void Start()
     {
@@ -45,73 +40,39 @@ public class CameraTrigger : MonoBehaviour
             fadeCanvas.alpha = 0;
             fadeCanvas.blocksRaycasts = false;
         }
-
-        lastFollowState = useFollowCamera;
-    }
-
-    void Update()
-    {
-        if (useFollowCamera != lastFollowState)
-        {
-            cameraFollow.enabled = useFollowCamera;
-            lastFollowState = useFollowCamera;
-        }
-
-        if (cameraFollow.enabled && cameraFollow.target == null)
-        {
-            cameraFollow.target = playerTransform;
-        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        if (returnToFollowCameraOnExit && playerAlreadyEntered)
+        if (cameraPoint != null)
+        {
+            cameraFollow.enabled = false;
+            cameraFollow.target = null;
+
+            SwitchCameraPosition(cameraPoint.position, cameraPoint.rotation);
+        }
+        else
+        {
+            Debug.LogWarning("CameraTrigger: Не вказано cameraPoint!");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (switchToFollowOnExit)
         {
             cameraFollow.enabled = true;
             cameraFollow.target = playerTransform;
-        }
-        else
-        {
-            cameraFollow.enabled = false;
-        }
-
-        if (playerAlreadyEntered && cameraHistory.Count > 0)
-        {
-
-            var previousCamera = cameraHistory.Pop();
-            SwitchCameraPosition(previousCamera.Item1, previousCamera.Item2);
-
-            playerAlreadyEntered = false;
-        }
-        else
-        {
-            cameraHistory.Push((cameraTransform.position, cameraTransform.rotation));
-
-            if (useFollowCamera)
-            {
-                cameraFollow.enabled = true;
-                cameraFollow.target = playerTransform;
-            }
-            else
-            {
-                Transform nextCamPos = GetClosestCameraPosition();
-                if (nextCamPos != null && nextCamPos.position != cameraTransform.position)
-                {
-                    cameraFollow.enabled = false;
-                    cameraFollow.target = null;
-                    SwitchCameraPosition(nextCamPos.position, nextCamPos.rotation);
-                }
-            }
-
-            playerAlreadyEntered = true;
         }
     }
 
     private void SwitchCameraPosition(Vector3 newCameraPos, Quaternion newCameraRot)
     {
-        StopAllCoroutines(); // На всяк випадок
+        StopAllCoroutines();
         StartCoroutine(FadeToNewPosition(newCameraPos, newCameraRot));
     }
 
@@ -139,22 +100,4 @@ public class CameraTrigger : MonoBehaviour
 
         fadeCanvas.alpha = 0f;
     }
-
-    private Transform GetClosestCameraPosition()
-    {
-        Transform closest = null;
-        float closestDistance = Mathf.Infinity;
-        foreach (Transform camPos in cameraPositions)
-        {
-            float distance = Vector3.Distance(playerTransform.position, camPos.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closest = camPos;
-            }
-        }
-        return closest;
-    }
-
-
 }
