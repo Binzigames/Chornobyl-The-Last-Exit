@@ -308,24 +308,28 @@ public class PlayerUIController : MonoBehaviour
             ambientAudioSource.volume = ambientVolume * masterVolume;
     }
 
-    // ========== Ambient Logic ==========
     private IEnumerator PlayAmbientLoop()
     {
         while (true)
         {
-            if (!ambientAudioSource.isPlaying && ambientClips.Count > 0)
+            if (ambientClips.Count > 0)
             {
                 AudioClip clip = ambientClips[Random.Range(0, ambientClips.Count)];
                 ambientAudioSource.clip = clip;
                 ambientAudioSource.volume = ambientVolume * masterVolume;
                 ambientAudioSource.Play();
-
-                // Debug log to check if sound is being played
                 Debug.Log("Playing ambient sound: " + clip.name);
-            }
 
-            yield return new WaitForSeconds(
-                ambientAudioSource.clip != null ? ambientAudioSource.clip.length + ambientDelay : 20f);
+                // Чекаємо поки трек завершиться
+                yield return new WaitForSeconds(clip.length);
+
+                // Пауза перед наступним треком
+                yield return new WaitForSeconds(ambientDelay);
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(5f, 20f));
+            }
         }
     }
 }

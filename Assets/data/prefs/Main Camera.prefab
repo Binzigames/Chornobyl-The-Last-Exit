@@ -225,9 +225,9 @@ RectTransform:
   - {fileID: 3684662740557847864}
   m_Father: {fileID: 6950571922853847834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000061035156, y: 27}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -295, y: 27}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3711988421556351161
@@ -269,7 +269,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8079985152748487490}
   m_FillRect: {fileID: 3210448621435977926}
   m_HandleRect: {fileID: 778163957804412607}
@@ -987,7 +987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -5.3297, y: 0.02145}
+  m_AnchoredPosition: {x: -5.329712, y: 0.02145}
   m_SizeDelta: {x: 10.6593, y: 20.0429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9097557036272194454
@@ -1235,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -5.6147, y: 0}
+  m_AnchoredPosition: {x: -5.614685, y: 0}
   m_SizeDelta: {x: 8.7705, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5888881195365482744
@@ -2077,9 +2077,9 @@ RectTransform:
   - {fileID: 1582467214679870693}
   m_Father: {fileID: 6950571922853847834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -59.999878, y: -34}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -49, y: 236}
   m_SizeDelta: {x: 47.7484, y: 381.9873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481320725346095992
@@ -2121,7 +2121,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4642674432060586482}
   m_FillRect: {fileID: 1936648952607023611}
   m_HandleRect: {fileID: 544669580478470387}
@@ -2508,7 +2508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.0000153}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4412928344450760097
@@ -3054,6 +3054,7 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: 0, y: 5, z: -10}
   smoothSpeed: 5
+  obstacleTag: wall
 --- !u!114 &3164835480246815442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4196,7 +4197,7 @@ MonoBehaviour:
   screamerAudio: {fileID: 97789466971755577}
   masterVolume: 0.965
   radiationVolume: 0.218
-  screamerVolume: 0.238
+  screamerVolume: 0.197
   ambientClips:
   - {fileID: 8300000, guid: 1f17d7315309b724097ef308d6ea5820, type: 3}
   - {fileID: 8300000, guid: f1b7f12488d3bf54baa86f825026b12e, type: 3}
