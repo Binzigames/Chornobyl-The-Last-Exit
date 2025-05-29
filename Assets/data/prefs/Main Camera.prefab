@@ -700,7 +700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 174, y: 50}
+  m_AnchoredPosition: {x: 215, y: 54}
   m_SizeDelta: {x: 264.62085, y: 68.17261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8049036742663800018
@@ -4204,7 +4204,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2532cd18031c9e64ca8b94911a90a380, type: 3}
   - {fileID: 8300000, guid: b9a4ff6410f7b0a40b84629a57cf3f45, type: 3}
   ambientAudioSource: {fileID: 6717614277452742760}
-  ambientVolume: 0.492
+  ambientVolume: 0.497
   InPause: 0
   PauseMenu: {fileID: 4464878961218489913}
   GamePanel: {fileID: 5155836799319827250}
@@ -4447,8 +4447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -749.61865, y: 65.961975}
-  m_SizeDelta: {x: 646.3398, y: 1080}
+  m_AnchoredPosition: {x: -757.7595, y: 65.961975}
+  m_SizeDelta: {x: 662.6215, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5857884260819349025
 CanvasRenderer:

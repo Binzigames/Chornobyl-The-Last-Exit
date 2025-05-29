@@ -695,11 +695,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[2].textEN
-      value: "ORIGINALY DEVELOPED BY \nPORKO"
+      value: "ORIGINALY DEVELOPED BY \nPORKO\nAEL-POLINO (3D art)"
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[2].textUA
-      value: "\u0420\u041E\u0417\u0420\u041E\u0411\u041B\u0415\u041D\u041E :\nPORKO"
+      value: "\u0420\u041E\u0417\u0420\u041E\u0411\u041B\u0415\u041D\u041E :\nPORKO\nAEL-POLINO
+        (3D \u0433\u0440\u0430\u0444\u0456\u043A\u0430)"
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[3].sprite

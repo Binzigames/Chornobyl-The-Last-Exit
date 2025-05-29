@@ -27,7 +27,7 @@ public class PlayerUIController : MonoBehaviour
     public List<AudioClip> ambientClips = new List<AudioClip>();
     public AudioSource ambientAudioSource;
     [Range(0f, 1f)] public float ambientVolume = 1f;
-    private float ambientDelay = 3f;
+    private float ambientDelay = 20f;
 
     [Header("Pause menu")]
     public bool InPause = false;
@@ -320,10 +320,7 @@ public class PlayerUIController : MonoBehaviour
                 ambientAudioSource.Play();
                 Debug.Log("Playing ambient sound: " + clip.name);
 
-                // Чекаємо поки трек завершиться
                 yield return new WaitForSeconds(clip.length);
-
-                // Пауза перед наступним треком
                 yield return new WaitForSeconds(ambientDelay);
             }
             else

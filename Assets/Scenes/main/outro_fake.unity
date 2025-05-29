@@ -594,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[0].text
@@ -689,7 +689,24 @@ PrefabInstance:
         \u0431\u0435\u0440\u0435\u0437\u043D\u044F."
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29f97ea1bf68d024bbdf1de8cd9cd7c2, type: 3}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[1].textEN
+      value: "DEVELOPED BY :\nPORKO \nAEL-POLINO (3D art)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[1].textUA
+      value: "\u0420\u041E\u0417\u0420\u041E\u0411\u041B\u0415\u041D\u041E :\nPORKO
+        \nAEL-POLINO (3D \u0433\u0440\u0430\u0444\u0456\u043A\u0430)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[2].textEN
       value: 'special THX (to old porko team (THEY DONT WORK ON THIS GAME!!!))
 
         Trustmebro
@@ -711,7 +728,7 @@ PrefabInstance:
         THX FOR PLAYING'
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[1].textUA
+      propertyPath: slides.Array.data[2].textUA
       value: "\u041E\u043A\u0440\u0435\u043C\u0456 \u043F\u043E\u0434\u044F\u043A\u0438
         (\u0441\u0442\u0430\u0440\u0456\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0456
         porko team (\u0412\u041E\u041D\u0418 \u041D\u0415 \u041F\u0420\u0410\u0426\u042E\u0412\u0410\u041B\u0418
@@ -720,41 +737,33 @@ PrefabInstance:
         \u0417\u0410 \u0413\u0420\u0423"
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[2].textEN
+      propertyPath: slides.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[3].textEN
       value: 'ending 2/2 : Fallen Legend'
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[2].textUA
+      propertyPath: slides.Array.data[3].textUA
       value: "\u043A\u0456\u043D\u0446\u0456\u0432\u043A\u0430 2/2 : \u041F\u0430\u0432\u0448\u0430
         \u043B\u0435\u0433\u0435\u043D\u0434\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[3].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 29f97ea1bf68d024bbdf1de8cd9cd7c2, type: 3}
-    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[3].textEN
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[3].textUA
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[4].sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 29f97ea1bf68d024bbdf1de8cd9cd7c2, type: 3}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].sprite
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[3].hasSprite
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[4].hasSprite
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].hasSprite
@@ -785,12 +794,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[3].spriteEffect
+      propertyPath: slides.Array.data[1].spriteEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
-      propertyPath: slides.Array.data[4].spriteEffect
+      propertyPath: slides.Array.data[2].spriteEffect
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[3].spriteEffect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
+      propertyPath: slides.Array.data[4].spriteEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 306293593843027462, guid: 943818b0e5d1e07498c50464e1fdfdc6, type: 3}
       propertyPath: slides.Array.data[5].spriteEffect
