@@ -1,21 +1,28 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using System.Collections;
 =======
+=======
+>>>>>>> Stashed changes
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 using System.Collections.Generic;
 
 namespace PlaymanitySDK
 {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     public static class PlaymanityClient
     {
@@ -128,6 +135,8 @@ namespace PlaymanitySDK
                 }
                 await Task.Delay(9000);
 =======
+=======
+>>>>>>> Stashed changes
     /// <summary>
     /// Client for interacting with the Playmanity backend services.
     /// Handles session management and advertisement retrieval.
@@ -349,11 +358,15 @@ namespace PlaymanitySDK
             {
                 LogError($"Exception during immediate heartbeat: {ex.Message}");
                 OnApiError?.Invoke("Immediate heartbeat failed", ex);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         }
 
         /// <summary>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         /// Ends the session when the application quits.
         /// </summary>
@@ -415,6 +428,8 @@ namespace PlaymanitySDK
         }
 
 =======
+=======
+>>>>>>> Stashed changes
         /// Stops the heartbeat process.
         /// </summary>
         private static void StopHeartbeat()
@@ -609,11 +624,15 @@ namespace PlaymanitySDK
         /// Retrieves an advertisement from the Playmanity server.
         /// </summary>
         /// <returns>An Advertisement object if successful, null otherwise.</returns>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         public static async Task<Advertisement> GetAdvertisementAsync()
         {
             if (!IsSessionValid)
             {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 Debug.Log("Session is not valid.");
                 return null;
@@ -629,6 +648,8 @@ namespace PlaymanitySDK
 
             using (UnityWebRequest request = new UnityWebRequest($"{PSDKConfigManager.ServerURL}/advertisements", "POST"))
 =======
+=======
+>>>>>>> Stashed changes
                 LogWarning("Attempted to get advertisement without a valid session.");
                 return null;
             }
@@ -716,11 +737,15 @@ namespace PlaymanitySDK
             string json = JsonConvert.SerializeObject(payload);
 
             using (UnityWebRequest request = new UnityWebRequest(endpoint, "POST"))
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             {
                 byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
                 request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 request.downloadHandler = new DownloadHandlerBuffer();
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 request.SetRequestHeader("Content-Type", "application/json");
 
@@ -751,6 +776,8 @@ namespace PlaymanitySDK
                 {
                     Debug.LogError("JSON parse error: " + ex.Message);
 =======
+=======
+>>>>>>> Stashed changes
                 request.SetRequestHeader("Content-Type", CONTENT_TYPE_JSON);
                 request.timeout = 30; // 30 seconds timeout
 
@@ -802,6 +829,9 @@ namespace PlaymanitySDK
                 catch (Exception ex)
                 {
                     LogError($"API request exception: {ex.Message}, URL: {endpoint}");
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     return null;
                 }
@@ -809,7 +839,10 @@ namespace PlaymanitySDK
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         #endregion
 
         #region Logging
@@ -822,12 +855,19 @@ namespace PlaymanitySDK
 
         #region Initialization and Cleanup
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Initialize()
         {
             Application.quitting += OnApplicationQuit;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+            Log("PlaymanitySDK initialized");
+>>>>>>> Stashed changes
 =======
             Log("PlaymanitySDK initialized");
 >>>>>>> Stashed changes
@@ -836,9 +876,12 @@ namespace PlaymanitySDK
         private static async void OnApplicationQuit()
         {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             await EndSessionAsync();
         }
 =======
+=======
+>>>>>>> Stashed changes
             Log("Application quitting, ending session...");
             await EndSessionAsync();
         }
@@ -901,6 +944,9 @@ namespace PlaymanitySDK
         /// Response class for advertisement requests.
         /// </summary>
         [Serializable]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         public class AdvertisementResponse
         {
@@ -909,11 +955,17 @@ namespace PlaymanitySDK
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         /// <summary>
         /// Model representing an advertisement.
         /// </summary>
         [Serializable]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         public class Advertisement
         {
@@ -928,7 +980,11 @@ namespace PlaymanitySDK
 
             [JsonProperty("type")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             public string Type { get; set; }
+=======
+            public int Type { get; set; }
+>>>>>>> Stashed changes
 =======
             public int Type { get; set; }
 >>>>>>> Stashed changes
@@ -946,6 +1002,10 @@ namespace PlaymanitySDK
             public bool IsActive { get; set; }
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+        #endregion
+>>>>>>> Stashed changes
 =======
         #endregion
 >>>>>>> Stashed changes

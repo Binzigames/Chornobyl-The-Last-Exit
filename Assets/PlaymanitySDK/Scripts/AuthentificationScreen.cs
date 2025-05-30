@@ -26,7 +26,11 @@ namespace PlaymanitySDK
             {
                 game_uuid = gameUUID,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 device_id = deviceID
+=======
+                device_uuid = deviceID
+>>>>>>> Stashed changes
 =======
                 device_uuid = deviceID
 >>>>>>> Stashed changes
@@ -154,7 +158,11 @@ namespace PlaymanitySDK
         public AuthStatus status { get; set; }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         [JsonProperty("token")]
+=======
+        [JsonProperty("auth_token")]
+>>>>>>> Stashed changes
 =======
         [JsonProperty("auth_token")]
 >>>>>>> Stashed changes

@@ -43,9 +43,12 @@ public class ButtonManager : MonoBehaviour
         }
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     // Функція для виходу з гри
 =======
+=======
+>>>>>>> Stashed changes
     public void ChangeSceneAfterAD(int sceneIndex)
     {
         if (sceneIndex >= 0 && sceneIndex < SceneManager.sceneCountInBuildSettings)

@@ -1458,7 +1458,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1810495886}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         m_MethodName: ChangeSceneWithDelay
+=======
+        m_MethodName: ChangeSceneAfterAD
+>>>>>>> Stashed changes
 =======
         m_MethodName: ChangeSceneAfterAD
 >>>>>>> Stashed changes
@@ -6313,4 +6317,7 @@ SceneRoots:
   - {fileID: 1738039754}
   - {fileID: 1505198145}
   - {fileID: 1389984309}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
