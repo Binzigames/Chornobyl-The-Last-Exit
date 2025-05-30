@@ -26,6 +26,17 @@ public class PlaymanityManager : MonoBehaviour
     private Coroutine currentAdCoroutine;
     private Advertisement advertisement;
 
+<<<<<<< Updated upstream
+=======
+    public delegate void AdEventHandler(bool success, string message = "");
+    public delegate void AdProgressHandler(float progress);
+
+    public event AdEventHandler OnAdStarted;
+    public event AdEventHandler OnAdCompleted;
+    public event AdEventHandler OnAdFailed;
+    public event AdProgressHandler OnAdProgress;
+
+>>>>>>> Stashed changes
     void Start()
     {
         //Vector2 size = GetAdImageSize();
@@ -60,8 +71,15 @@ public class PlaymanityManager : MonoBehaviour
 
         if (ad == null)
         {
+<<<<<<< Updated upstream
             Debug.LogWarning("No advertisement retrieved.");
             displaysAd = false;
+=======
+            string errorMsg = "No advertisement retrieved.";
+            Debug.LogWarning(errorMsg);
+            displaysAd = false;
+            OnAdFailed?.Invoke(false, errorMsg);
+>>>>>>> Stashed changes
             yield break;
         }
 
@@ -75,13 +93,34 @@ public class PlaymanityManager : MonoBehaviour
 
         yield return StartCoroutine(LoadImage(ad.Media));
 
+<<<<<<< Updated upstream
         adPanel.SetActive(true);
+=======
+        if (adImage.sprite == null)
+        {
+            string errorMsg = "Failed to load ad image.";
+            Debug.LogWarning(errorMsg);
+            displaysAd = false;
+            advertisement = null;
+            OnAdFailed?.Invoke(false, errorMsg);
+            yield break;
+        }
+
+        adPanel.SetActive(true);
+        OnAdStarted?.Invoke(true);
+>>>>>>> Stashed changes
 
         float elapsedTime = 0f;
         while (elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
+<<<<<<< Updated upstream
             adSlider.value = 1f - (elapsedTime / time);
+=======
+            float progress = elapsedTime / time;
+            adSlider.value = 1f - progress;
+            OnAdProgress?.Invoke(progress);
+>>>>>>> Stashed changes
             yield return null;
         }
 
@@ -90,6 +129,10 @@ public class PlaymanityManager : MonoBehaviour
         displaysAd = false;
         advertisement = null;
         Debug.Log("Ad display time ended.");
+<<<<<<< Updated upstream
+=======
+        OnAdCompleted?.Invoke(true);
+>>>>>>> Stashed changes
     }
 
     private IEnumerator LoadImage(string mediaUrl)
@@ -101,6 +144,10 @@ public class PlaymanityManager : MonoBehaviour
             if (uwr.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Failed to load ad image: {uwr.error}");
+<<<<<<< Updated upstream
+=======
+                OnAdFailed?.Invoke(false, $"Failed to load ad image: {uwr.error}");
+>>>>>>> Stashed changes
                 yield break;
             }
 
@@ -119,12 +166,37 @@ public class PlaymanityManager : MonoBehaviour
             adImage.sprite = null;
             displaysAd = false;
             Debug.Log("Current ad stopped manually.");
+<<<<<<< Updated upstream
         }
     }
 
     public void InvokeAd(float time)
     {
         StartCoroutine(ShowStaticAd(time));
+=======
+            OnAdCompleted?.Invoke(false, "Ad stopped manually");
+        }
+    }
+
+    [Obsolete("Use InvokeAd with event handlers instead.")]
+    public void InvokeAd(float time)
+    {
+        currentAdCoroutine = StartCoroutine(ShowStaticAd(time));
+    }
+
+    public void InvokeAd(float time, AdEventHandler onCompleted = null, AdEventHandler onFailed = null, AdProgressHandler onProgress = null)
+    {
+        if (onCompleted != null)
+            OnAdCompleted += onCompleted;
+
+        if (onFailed != null)
+            OnAdFailed += onFailed;
+
+        if (onProgress != null)
+            OnAdProgress += onProgress;
+
+        currentAdCoroutine = StartCoroutine(ShowStaticAd(time));
+>>>>>>> Stashed changes
     }
 
     public void AdClick()

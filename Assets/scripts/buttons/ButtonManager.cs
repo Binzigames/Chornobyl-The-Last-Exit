@@ -42,8 +42,29 @@ public class ButtonManager : MonoBehaviour
             Debug.LogError("Сцена з таким індексом не існує!");
         }
     }
+<<<<<<< Updated upstream
 
     // Функція для виходу з гри
+=======
+    public void ChangeSceneAfterAD(int sceneIndex)
+    {
+        if (sceneIndex >= 0 && sceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            PlaymanityManager.Instance.InvokeAd(
+        5f,
+        onCompleted: (success, message) => SceneManager.LoadScene(sceneIndex),
+        onFailed: (success, message) => Debug.LogError($"Ad failed: {message}"),
+        onProgress: (progress) => Debug.Log($"Ad progress: {progress * 100}%")
+);
+        }
+    }
+
+    public void Restart()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+>>>>>>> Stashed changes
     public void QuitGame()
     {
 #if UNITY_EDITOR
